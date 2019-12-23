@@ -1,3 +1,7 @@
+/**
+ * @author AlgoBuilder
+ * @see <a href="https://github.com/AlgoBuilder">Source Code</a>
+ */
 public class GeneticAlgorithm {
     private int genSize;
     public GeneticAlgorithm setGenSize(int n) {

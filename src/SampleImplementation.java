@@ -1,5 +1,8 @@
+/**
+ * @author AlgoBuilder
+ * @see <a href="https://github.com/AlgoBuilder">Source Code</a>
+ */
 public class SampleImplementation {
-
     public static void main(String[] args) {
 
         // Gene domains
@@ -22,7 +25,7 @@ public class SampleImplementation {
         genes[6] = new Gene().setDomain(domain_7);
 
         int num = 10; // number of individuals in a generation
-        int generations = 8; // number of generations
+        int generations = 20; // number of generations
 
         GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm()
                 .setFitnessFunction(new SampleFitnessFunction()).setGeneDomain(genes).setGenSize(num)
@@ -41,7 +44,6 @@ public class SampleImplementation {
         // info on fittest @generations
         System.out.print("---------------------\nFittest chromosome:\t");
         geneticAlgorithm.getCurrentPopulation().getFittest().getChromosome().printChromosome();
-
 
     }
 }

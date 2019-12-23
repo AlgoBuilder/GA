@@ -1,3 +1,7 @@
+/**
+ * @author AlgoBuilder
+ * @see <a href="https://github.com/AlgoBuilder">Source Code</a>
+ */
 public class Population {
     private Individual[] individuals;
     public Population setIndividuals(Individual[] people) {
@@ -13,7 +17,7 @@ public class Population {
     }
 
     private double popFitness;
-    public double getPopFitness() {
+    double getPopFitness() {
         return popFitness;
     }
     public Population setPopFitness() {
@@ -24,18 +28,18 @@ public class Population {
     }
 
     private FitnessFunction fitnessFunction;
-    public Population setFitnessFunction(FitnessFunction fitFn) {
+    Population setFitnessFunction(FitnessFunction fitFn) {
         fitnessFunction = fitFn;
         return this;
     }
 
     private double mutation;
-    public Population setMutation(double m) {
+    Population setMutation(double m) {
         mutation = m;
         return this;
     }
 
-    public Population initialize(Gene[] genes, int size) {
+    Population initialize(Gene[] genes, int size) {
         individuals = new Individual[size];
         // randomly generate individuals' genetic makeup
         for (int i=0; i<size; i++) {
@@ -45,12 +49,15 @@ public class Population {
         return setFittest();
     }
 
-    public Population reproduce() {
+    Population reproduce() {
         Individual[] pop = new Individual[individuals.length];
         for (int i=0; i<individuals.length; i++)  {
             pop[i] = makeChild();
         }
         Population nextGen = new Population().setFitnessFunction(fitnessFunction).setIndividuals(pop).setPopFitness().setFittest();
+
+        // next update: if fittest(gen1).equals(fittest(gen2)) then return current else return inject last
+        if (this.getFittest().getFitness() <  nextGen.getFittest().getFitness()) return nextGen;
         return nextGen.setIndividual(nextGen.least_fit, this.getFittest()).setFittest();
     }
 
@@ -75,7 +82,7 @@ public class Population {
         }
         return this;
     }
-    public Individual getFittest() {
+    Individual getFittest() {
         return fittest;
     }
     public int getLeast_fit() {

@@ -1,11 +1,15 @@
-public class Chromosome {
+/**
+ * @author AlgoBuilder
+ * @see <a href="https://github.com/AlgoBuilder">Source Code</a>
+ */
+class Chromosome {
     private int size;
-    public int size() {
+    int size() {
         return size;
     }
 
     private Gene[] chromosome;
-    public Chromosome setChromosome(Gene[] g) {
+    private Chromosome setChromosome(Gene[] g) {
         chromosome = new Gene[g.length];
         for (int i=0; i<g.length; i++) chromosome[i] = g[i].copy();
         size = g.length;
@@ -14,14 +18,14 @@ public class Chromosome {
     public Gene[] getChromosome() {
         return chromosome;
     }
-    public void setGene(int i, Gene gene) {
+    void setGene(int i, Gene gene) {
         chromosome[i] = gene.copy();
     }
-    public Gene getGene(int i) {
+    Gene getGene(int i) {
         return chromosome[i];
     }
 
-    public void printChromosome() {
+    void printChromosome() {
         for (int i=0; i<chromosome.length; i++) {
             if (i==0) System.out.print("[" + chromosome[i].getValue().toString() + ", ");
             else if (i<chromosome.length-1) System.out.print(chromosome[i].getValue().toString() + ", ");
@@ -33,12 +37,11 @@ public class Chromosome {
         return new Chromosome().setChromosome(this.chromosome);
     }
 
-    public Chromosome randomize(Gene[] genes) {
+    void randomize(Gene[] genes) {
         // for default population
         chromosome = new Gene[genes.length];
         size = genes.length;
         for (int i=0; i<genes.length; i++) chromosome[i] = genes[i].clone();
-        return this;
     }
 
 }

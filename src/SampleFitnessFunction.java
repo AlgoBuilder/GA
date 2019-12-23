@@ -1,3 +1,7 @@
+/**
+ * @author AlgoBuilder
+ * @see <a href="https://github.com/AlgoBuilder">Source Code</a>
+ */
 public class SampleFitnessFunction extends FitnessFunction {
     // Give points for odds
     public double getFitness(Chromosome chromosome) {
